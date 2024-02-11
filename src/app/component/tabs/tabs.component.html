@@ -1,0 +1,169 @@
+<!-- <p>tabs works!</p> -->
+<h1 class="alert-warning p-3 text-center">Tabs</h1>
+
+<!-- Example 1 -->
+
+<ul class="nav nav-pills">
+    <li class="nav-item" (click)="selectSkill('javascript')">
+        <a href="javascript:;" class="nav-link" [ngClass]="{
+            active : selectedSkillSet.toLowerCase().includes('javascript')
+        }">Javascript</a>
+    </li>
+    <li class="nav-item" (click)="selectSkill('angular')">
+        <a href="javascript:;" class="nav-link" [ngClass]="{
+            active : selectedSkillSet.toLowerCase().includes('angular')
+        }">Angular</a>
+    </li>
+    <li class="nav-item" (click)="selectSkill('node')">
+        <a href="javascript:;" class="nav-link" [ngClass]="{
+            active : selectedSkillSet.toLowerCase().includes('node')
+        }">Node</a>
+    </li>
+</ul>
+
+
+<div class="tabs-body">
+    <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes('javascript')">
+        <div class="card-body">
+            <strong>Javascript</strong>
+            Javascript is the high-level, interpreted programming language
+            primariy used for adding interactivity of web pages.
+        </div>
+    </div>
+    <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes('angular')">
+        <div class="card-body">
+            <strong>Angular</strong>
+            Angular is the framework of javascript which is used to easy
+            to add functionality.
+        </div>
+    </div>
+    <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes('node')">
+        <div class="card-body">
+            <strong>Node</strong>
+            Node are the providing to the node package manager.
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<!-- Example 2 -->
+
+<!-- <ul class="nav nav-pills">
+    <li class="nav-item" *ngFor="let skill of skillArr"
+    (click)="selectSkill(skill.skillName)"
+    >
+        <a href="javascript:;" class="nav-link text-capitalize"
+        [ngClass]="{
+            active : selectedSkillSet.toLowerCase().includes(skill.skillName)
+        }"
+        >
+            {{skill.skillName}}
+        </a>
+    </li>
+</ul> -->
+
+
+<ul class="nav nav-pills">
+    <li class="nav-item" *ngFor="let skill of skillArr" (click)="selectedSkillSet = skill.skillName">
+        <a href="javascript:;" class="nav-link text-capitalize" [ngClass]="{
+            active : selectedSkillSet.toLowerCase().includes(skill.skillName)
+        }">
+            {{skill.skillName}}
+        </a>
+    </li>
+</ul>
+
+
+<div class="tabs-body">
+    <ng-container *ngFor="let skill of skillArr">
+        <div class="card" *ngIf="selectedSkillSet.toLowerCase().includes(skill.skillName)">
+            <div class="card-body" [innerHTML]="skill.content">
+                {{skill.content}}
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+
+<!-- ng-container >> It is a special element(directive) which holds structural directive with out
+                     adding any extra/new html element in DOM -->
+
+<hr>
+
+
+<!-- <div>
+
+    <p *ngIf="numsValue === 5">
+        The value is 5
+    </p>
+
+    <p *ngIf="numsValue === 10">
+        The value is 10
+    </p>
+
+    <p *ngIf="numsValue === 15">
+        The value is 15
+    </p>
+
+     <p *ngIf="numsValue !== 5 && numsValue !== 10 && numsValue !== 15">
+        The value is anything apart from 5, 10 and 15
+    </p> 
+              OR
+    <p *ngIf="![5,10,15].includes(numsValue)">
+        The value is anything apart from 5, 10 and 15  
+    </p>
+</div> -->
+
+
+
+
+<div [ngSwitch]="numsValue">
+    <p *ngSwitchCase="5">
+        The value is 5
+    </p>
+    <p *ngSwitchCase="10">
+        The value is 10
+    </p>
+    <p *ngSwitchCase="15">
+        The value is 15
+    </p>
+    <p *ngSwitchDefault>
+        The value is anything apart from 5, 10 and 15
+    </p>
+</div>
+
+<hr>
+
+<ul class="nav nav-pills">
+    <li class="nav-item" 
+    (click) = "selectedSkillSet = skill.skillName"
+    *ngFor="let skill of skillArr">
+        <a href="javascript:;" class="nav-link" [ngClass]="{
+            active : selectedSkillSet.toLowerCase().includes(skill.skillName)
+        }">{{skill.skillName}}</a>
+    </li>
+</ul>
+
+
+<div class="tabs-body" [ngSwitch]="selectedSkillSet.toLowerCase().trim()">
+    <div class="card" *ngSwitchCase="'javascript'">
+        <div class="card-body">
+            <strong>JavaScript</strong>
+            Javascript is the high-level, interpreted programming language primariy used for adding interactivity of web
+            pages.
+        </div>
+    </div>
+    <div class="card" *ngSwitchCase="'angular'">
+        <div class="card-body" *ngIf="selectedSkillSet.toLowerCase().includes('angular')">
+            <strong>Angular</strong>
+            Angular is the framework of javascript which is used to easy to add functionality.
+        </div>
+    </div>
+    <div class="card" *ngSwitchCase="'node'">
+        <div class="card-body" *ngIf="selectedSkillSet.toLowerCase().includes('node')">
+            <strong>Node</strong>
+            Node are the providing to the node package manager.
+        </div>
+    </div>
+</div>

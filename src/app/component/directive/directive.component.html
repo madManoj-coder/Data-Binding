@@ -1,0 +1,59 @@
+<h1 class="p-3 text-center alert-warning">Directive</h1>
+
+<!-- ############ Example of structural directive ############## -->
+
+<!-- *ngIf="true"(structural directive) the button is showed in UI
+  or *ngIf="false" then button is removed from UI  -->
+
+<div class="text-center mb-2">
+    <button *ngIf="true" class="btn btn-outline-primary">Add</button>
+    <button *ngIf="true" class="btn btn-outline-primary">Add</button>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p class="para1 text-center p-4 alert-primary">
+                The product is {{productName}} is delivered
+            </p>
+            <p class="para2 text-center p-4 alert-primary">
+                The product is {{productName}} is delivered
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ############ example of Attribute directive ############# -->
+<!-- attribute directive :- [ngStyle] = "{padding : '15px'}" -->
+<!-- we can apply css conditionally -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <p [ngStyle]="
+                {
+                    backgroundColor : getBg()
+                }"
+
+            [ngClass]="
+            {
+                'text-white' : isProductAvailable,
+                'text-danger' : !isProductAvailable,
+                'p-4' : isProductAvailable,
+                'p-2' : !isProductAvailable
+            }
+            "
+            >
+                <em>This  product is Airbuds</em>
+                <strong *ngIf="isProductAvailable; else productNotAvailable">Available</strong>
+                <!-- <strong *ngIf="!isProductAvailable">Not available</strong> -->
+
+                <ng-template #productNotAvailable>
+                    <strong>Not available</strong>
+                </ng-template>
+            </p>
+        </div>
+    </div>
+</div>

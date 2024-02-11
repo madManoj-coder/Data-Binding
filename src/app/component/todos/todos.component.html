@@ -1,0 +1,35 @@
+<!-- <p>todos works!</p> -->
+<h1 class="alert-success p-3 text-center">Todos Table</h1>
+
+<!-- {{todoArray | json}} -->
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="table-responsive">
+            <table class="table table-bordered bg">
+                <thead>
+                  <tr>
+                    <th>Sr.No</th>
+                    <th>Title</th>
+                    <th>UserId</th>
+                    <th>
+                      <label for="status">Status</label>
+                    </th>
+                  </tr>  
+                </thead>
+                <tbody *ngFor="let todo of todoArray; index as i">
+                    <tr>
+                        <td>{{i + 1}}</td>
+                        <td>{{todo.title}}</td>
+                        <td>{{todo.userId}}</td>
+                        <td [ngClass]="{
+                            'text-success' : todo.completed,
+                            'text-danger' : !todo.completed
+                        }">{{todo.completed ? 'completed' : 'incompleted'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

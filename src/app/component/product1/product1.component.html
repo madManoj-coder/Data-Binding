@@ -1,0 +1,46 @@
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 d-flex justify-content-between">
+            <button class="btn btn-outline-primary" (click)="addProduct()">Add product</button>
+            <button class="btn btn-outline-danger" (click)="removeProduct()" [disabled]="addNumber === 0">Remove
+                product</button>
+            <p class="alert-primary p-2">
+                {{productStatus}}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label for="search">One way binding</label>
+                <input type="text" class="form-control" (keyup)="searching($event)">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p class="alert-primary p-4">
+                {{searchedValue}}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label for="search">Two way binding</label>
+                <input type="text" class="form-control" [(ngModel)]="searchedValue2">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p class="alert-primary p-2">
+                {{searchedValue2}}
+            </p>
+        </div>
+    </div>
+</div>
+
+
+

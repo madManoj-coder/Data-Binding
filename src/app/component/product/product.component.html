@@ -1,0 +1,49 @@
+<!-- <p class="para text-center">This is product
+    <strong>{{productName}}</strong>
+    with Id
+    <strong>{{productId}}</strong>
+    and the status is
+    <strong>{{productStatus}}</strong>  string Interpolation 
+</p> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <p [innerHTML]="productName"> <!-- property Binding -->
+
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Difference between string interpolation and data binding -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <p>
+                {{res}} <!-- string Interpolation -->
+            </p>
+
+            <p [innerHTML]="res"> <!-- property Binding -->
+
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3 mb-4">
+            <input type="text" class="form-control" [value]="goal">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 offset-5 mb-4">
+            <button class="btn btn-outline-warning" [disabled]="disabled">Click</button>
+        </div>
+    </div>
+</div>
+
+
